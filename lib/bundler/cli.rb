@@ -927,6 +927,7 @@ module Bundler
       when 1
         specs.first
       else
+        raise GemNotFound unless $stdout.tty?
         specs.each_with_index do |spec, index|
           Bundler.ui.info "#{index.succ} : #{spec.name}", true
         end
